@@ -24,7 +24,7 @@ class EmpTable {
       html += `<td>${emp.id}</td>`;
       html += `<td>${emp.name}</td>`;
       html += `<td>${emp.position}</td>`;
-      html += `<td>${emp.salary}</td>`;
+      html += `<td>${Number(emp.salary).toLocaleString("uk-UA", { style: "currency", currency: "UAH",})}</td>`;
       html += "</tr>";
     }
     html += "</tbody></table>";
@@ -41,4 +41,5 @@ const employees = [
 
 const empTable = new EmpTable(employees);
 
-document.body.innerHTML = empTable.getHtml();
+const root = document.getElementById("table-root") || document.body;
+root.innerHTML = empTable.getHtml();
